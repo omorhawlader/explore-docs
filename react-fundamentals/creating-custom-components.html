@@ -1,0 +1,60 @@
+<!-- Creating custom components -->
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script type="text/babel">
+    // 🐨 Make a function called `message` which returns the JSX we want to share
+    // function message(props){
+    //   return(
+    //     <div className='message'>{props.children}</div>
+    //   )
+    // }
+    // const component =  React.createElement(message,{children:'omar'}) // we can do it like this in it!
+
+    function Message(props){
+      return(
+        <div className='message'>{props.children}</div>
+      )
+    }
+
+    const element = (
+      <div className="container">
+       { /* {component} working */} 
+
+       {/* {message({children:"Omar!"})} is working as well! working */} 
+
+      { /*but if we do it like this in jsx */} 
+      { /* <message children='my name is omar' /> */}
+       {/* jsx convet this to it -> <message>my name is omar</message>
+        
+        and in  browser console--
+
+         Warning: The tag <message> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.
+        at message
+        at div
+        
+        bcoz jsx handle this ->
+        React.createElement("message", {
+          children: "my name is omar"
+        }) jsx past type as a string but we need to past as a function then react can handle this!
+         thats why we need to use first letter Upper case like message to Message.
+         then
+         jsx will do this
+         React.createElement(Message, {
+          children: "my name is omar"
+        })
+        that way we need to start with upper letter when we make a react component  
+        */}
+
+        <Message children="hi, " />
+        <Message children="My name is Omar" />
+
+      </div>
+    )
+
+    ReactDOM.createRoot(document.getElementById('root')).render(element)
+  </script>
+</body>

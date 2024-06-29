@@ -1,0 +1,30 @@
+<!-- Intro to raw React APIs -->
+
+<body>
+  <div id="root"></div>
+
+  <!-- 🐨 add React and ReactDOM on the page. -->
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+ 
+
+  <script type="module">
+    const rootElement = document.getElementById('root')
+    const span = React.createElement('span',{},'hello')
+    const span_ = React.createElement('span',{},'world')
+    const props = {
+      className:'container',
+      children:[
+        span,
+        ' ',
+        span_
+      ]
+    }
+    const elementType = 'div'
+    const element = React.createElement(elementType,props)
+    console.log(element);
+
+    const root = ReactDOM.createRoot(rootElement)
+    root.render(element)
+  </script>
+</body>
